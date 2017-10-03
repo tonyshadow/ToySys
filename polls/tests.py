@@ -104,6 +104,7 @@ class QuestionIndexViewTests(TestCase):
             ['<Question: Past question 2.>', '<Question: Past question 1.>']
         )
 
+
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         """
