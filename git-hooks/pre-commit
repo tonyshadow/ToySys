@@ -2,22 +2,22 @@
 #
 # a pre-commit git-hook to do static analysis with pylint before commiting.
 
-#check if in a virtual env, if yes, then add it to PATH.
+# check whether in a virtual env, if yes, then add it to PATH.
 if [ ! -z $VIRTUAL_ENV ]; then
     PATH=$VIRTUAL_ENV/bin:$PATH
 fi
 
-#get the dir of python files among the committed files.
+# get the dir of python files among the committed files.
 PYFILES=$(git diff --name-only --staged | grep "\.py$")
 
-#if there is no python file, then just do the commit.
+# if there is no python file, then just do the commit.
 if [ -z $PYFILES ]; then
     exit 0
 else
     echo "\nStarting static analysis on your code...\n"
-    #use pylint to do the static analysis on these python files.
+    # use pylint to do the static analysis on these python files.
     pylint $PYFILES
-    #get the exit code of analysis result (0 means no error).
+    # catch the exit code of analysis result (0 means no error).
     OUT=$?
     if [ $OUT -eq 0 ]; then
         echo "\nYour code looks great!\n"
