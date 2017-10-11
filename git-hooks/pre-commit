@@ -25,6 +25,7 @@ else
     else
         echo "SORRY! STATIC ANALYSIS FAILED!"
         echo "You can not commit until your code pass the static analysis!\n"
+        echo "Or you can commit only non-python files\n"
         exit 1
     fi
 fi
