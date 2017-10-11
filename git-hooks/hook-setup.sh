@@ -1,18 +1,20 @@
 #!/bin/sh
 #
+# DO NOT CHANGE THE EXECUTE RIGHT OF THIS SCRIPT!!!
+#
 # Script to set local pre-commit git-hook as a symlink to the actual pre-commit
 # script which is maintained within the remote repo.
 #
-# how to install:
+# How to install:
 # 1. open your terminal (bash)
 # 2. cd to your local repo of this project
 # 3. git pull origin master (you will find git-hooks dir in your local repo)
 # 4. cd to git-hooks dir
-# 5. chmod +x hook-setup.sh (give run permission to this script)
-# 6. ./hook-setup.sh (run this script)
-# 7. now, you have a pre-commit hook in your local repo, which will run static analysis
+# 5. ./hook-setup.sh (run this script)
+# 6. now, you have a pre-commit hook in your local repo, which will run static analysis
 #    before each of your commit
-# 8. enjoy!
+# 7. enjoy!
+#
 
 # get the dir of local hooks
 GITHOOKS_DIR=$(git rev-parse --show-toplevel)/.git/hooks
@@ -26,6 +28,3 @@ fi
 
 # symlink local pre-commit hook to repo actual hook
 ln -s -f $REPOHOOKS_DIR/pre-commit $GITHOOKS_DIR/pre-commit
-
-# give run permission to pre-commit script)
-chmod +x pre-commit
